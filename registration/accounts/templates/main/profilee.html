@@ -1,0 +1,14 @@
+{% extends 'layout/basic.html' %}
+ {% block title %}{{ user.username }}{% endblock %}
+ {% block h1 %}{{ user.username }}{% endblock %}
+ 
+{% block content %}
+	<p>Логин: {{ user.username }}</p>
+	<p>Имя: не известно</p>
+	<p>Фамилия: не известно</p>
+	<p>Возраст: не известно</p>
+	<p>Адрес: не известно</p>
+	<p>Телефон: не известно</p>
+	<p>Электронная почта: не известно</p>
+
+{% endblock content %}

@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" 
+  content="text/html; charset=utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}">
+  <title>{% block title %}Главная{% endblock %} - Стадионы России(beta)</title>
+  <style>
+      body { background: url(../../static/BG.jpg); 
+      -moz-background-size: 100%; /* Firefox 3.6+ */
+      -webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+      -o-background-size: 100%; /* Opera 9.6+ */
+      background-size: 100%; /* Современные браузеры */}
+  </style>
+</head>
+<body>
+  <ul style="list-style-type: none; padding-left: 0; margin-left: 0">
+    <li style="display: inline"><a href="{% url 'index' %}" style="text-decoration: none;
+        font-family: sans-serif;
+        color: gray;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #fff2bc;
+        border-bottom: 5px solid #5757a0;">Главная</a></li>
+    <li style="display: inline"><a href="{% url 'list_of_station' %}" style="text-decoration: none;
+        font-family: sans-serif;
+        color: gray;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #fff2bc;
+        border-bottom: 5px solid #5757a0;">Стадионы</a></li>
+    {% if user.is_authenticated %}
+      <li style="display: inline"><a href="{% url 'profile' %}" style="text-decoration: none;
+        font-family: sans-serif;
+        color: gray;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #fff2bc;
+        border-bottom: 5px solid #5757a0;">{{ user.username }}</a></li>
+      <li style="display: inline"><a href="{% url 'logout' %}" style="text-decoration: none;
+        font-family: sans-serif;
+        color: gray;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #fff2bc;
+        border-bottom: 5px solid #5757a0;">Выйти</a></li>
+    {% else %}
+      <li style="display: inline"><a href="{% url 'signup' %}" style="text-decoration: none;
+        font-family: sans-serif;
+        color: gray;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #fff2bc;
+        border-bottom: 5px solid #5757a0;">Регистрация</a></li>
+      <li style="display: inline"><a href="{% url 'login' %}" style="text-decoration: none;
+        font-family: sans-serif;
+        color: gray;
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #fff2bc;
+        border-bottom: 5px solid #5757a0;">Войти</a></li>
+    {% endif %}
+  </ul>
+  <header>
+    <h1 style="color: white; padding: 30px 30px; background-color: rgba(0,0,0,0.7);">{% block h1 %}{% endblock %}</h1>
+      
+  </header>
+
+  <section style="color: white; padding: 30px 30px; background-color: rgba(0,0,0,0.7);">
+    {% block content %}
+    {% endblock %}
+  </section>
+</body>
+</html>
